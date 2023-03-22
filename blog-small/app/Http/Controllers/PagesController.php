@@ -9,12 +9,6 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $news = News::all();
-        return view('welcome', compact("news"));
-    }
-    public function selecter($id)
-    {
-        $newst = News::find($id);
-        return view("new", compact("newst"));
+        return redirect("/news");
     }
 }
