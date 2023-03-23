@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
@@ -24,10 +25,12 @@ Route::get('/news/create', [NewsController::class, 'create']);
 Route::post('/news/create', [NewsController::class, "store"]);
 Route::put("/news/{id}", [NewsController::class, 'editForm']);
 
+Route::delete("/news/{id}", [NewsController::class, 'deletePost']);
+
 Route::get('/news/{id}', [NewsController::class, 'selecter']);
 
 Route::get('/news/{id}/edit', [NewsController::class, "edit"]);
-
+Route::get('/news/category/{category}', [CategoryController::class, "index"]);
 
 
 

@@ -10,8 +10,9 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::all();
-        return view('news.index', compact("news"));
+        $categoris = News::select("categoris")->distinct()->get();
+        $news = News::paginate(4);
+        return view('news.index', compact("news", "categoris"));
     }
     public function selecter($id)
     {
@@ -38,10 +39,16 @@ class NewsController extends Controller
     }
     public function editForm($id)
     {
-        $article = News::findOrFail($id);
-        $article->title = request('title');
-        $article->content = request('content');
-        $article->save();
+        $postNews = News::findOrFail($id);
+        $postNews->title = request('title');
+        $postNews->content = request('content');
+        $postNews->save();
         return redirect("/news/" . $id);
+    }
+    public function deletePost($id)
+    {
+        $deteleItem = News::find($id);
+        $deteleItem->delete();
+        return redirect("/");
     }
 }

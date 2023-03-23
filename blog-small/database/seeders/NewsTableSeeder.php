@@ -17,10 +17,13 @@ class NewsTableSeeder extends Seeder
     {
         $fake = Fake::create();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 6; $i++) {
             DB::table('news')->insert([
                 "title" => $fake->name,
-                "content" => $fake->sentence(10)
+                "content" => $fake->sentence(14),
+                "categoris" => 'Tình yêu',
+                'created_at' => $fake->date("Y-m-d H:i:s"),
+                'updated_at' => $fake->date("Y-m-d H:i:s"),
             ]);
         }
     }

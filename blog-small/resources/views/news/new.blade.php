@@ -10,8 +10,17 @@ Detail News
             <div class="col-sm-6">
                 <h3>{{ $newst->title }}</h3>
                 <p>{{ $newst->content }}</p> 
+                <div class="actione d-flex">
+                  <a class="btn btn-sm btn-info" href="/news/{{ $newst->id }}/edit">Sửa</a>
+                  <form action="/news/{{ $newst->id }}" method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <button type="submit" class="mx-3 btn btn-sm btn-secondary">Xóa</button>
+                </form>
+                 </div>
          </div>
-         <a href="/news/{{ $newst->id }}/edit">Sửa</a>
+
+
          <div class="col-3"></div>
         </div>
 @stop
