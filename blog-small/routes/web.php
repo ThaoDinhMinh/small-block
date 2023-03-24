@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [PagesController::class, 'index']);
+
 Route::get('/news/create', [NewsController::class, 'create']);
 
 
@@ -31,6 +32,9 @@ Route::get('/news/{id}', [NewsController::class, 'selecter']);
 
 Route::get('/news/{id}/edit', [NewsController::class, "edit"]);
 Route::get('/news/category/{category}', [CategoryController::class, "index"]);
+
+Route::post("/login-user", [NewsController::class, 'login'])->name('login-user');
+Route::get("/logout", [NewsController::class, 'logout']);
 
 
 

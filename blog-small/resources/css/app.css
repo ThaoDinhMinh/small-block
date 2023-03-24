@@ -1,0 +1,8 @@
+.from-login {
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 300px;
+    background-color: red;
+    z-index: 1;
+}
