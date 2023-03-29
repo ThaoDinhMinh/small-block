@@ -21,7 +21,7 @@ class NewsTableSeeder extends Seeder
             DB::table('news')->insert([
                 "title" => $fake->name,
                 "content" => $fake->sentence(14),
-                "categoris" => 'Tình yêu',
+                "id_categoris" => 1,
                 'created_at' => $fake->date("Y-m-d H:i:s"),
                 'updated_at' => $fake->date("Y-m-d H:i:s"),
             ]);

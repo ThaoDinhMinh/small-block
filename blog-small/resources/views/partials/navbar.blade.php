@@ -10,6 +10,20 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/news/create">Post</a>
                 </li>
+                @if (Auth::check())
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Quản lý
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/quanly/post">Bài Post</a></li>
+                            <li><a class="dropdown-item" href="/quanly/category/manager">Category</a></li>
+                        </ul>
+                    </li>
+                @else
+                    <li></li>
+                @endif
             </ul>
             <div class="login d-flex align-center">
                 @if (Auth::check())
@@ -30,9 +44,10 @@
             <form action="{{ route('login-user') }}" method="POST">
                 @csrf
                 <label for="emailid" class="form-label  mt-3">Nhập email</label>
-                <input name="email" type="email" class="form-control" id="emailid" aria-describedby="emailHelp">
+                <input name="email" value="kienminh.tnut@gmail.com" type="email" class="form-control" id="emailid"
+                    aria-describedby="emailHelp">
                 <label for="passwordid" class="form-label  mt-3">Nhập password</label>
-                <input name="password" type="password" class="form-control" id="passwordid"
+                <input name="password" value="password" type="password" class="form-control" id="passwordid"
                     aria-describedby="passwordHelp">
                 <input class="btn btn-lg btn-primary mt-3" name="submit" type="submit" value="Đăng nhập">
             </form>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\News;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,7 @@ class NewsController extends Controller
     }
     public function index()
     {
-        $categoris = News::select("categoris")->distinct()->get();
+        $categoris = Category::all();
         $news = News::paginate(4);
         return view('news.index', compact("news", "categoris"));
     }
@@ -53,8 +54,10 @@ class NewsController extends Controller
     }
     public function create()
     {
+        $categoris = Category::all();
         if (Auth::check()) {
-            return view('news.create');
+
+            return view('news.create', compact("categoris"));
         }
     }
     public function store(Request $request)
@@ -64,6 +67,7 @@ class NewsController extends Controller
             $post = new News();
             $post->title = $request->title;
             $post->content = $request->content;
+            $post->id_categoris = $request->category;
             $post->save();
             return redirect("/news");
         }
